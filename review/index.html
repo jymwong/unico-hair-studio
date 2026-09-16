@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
 <title>UNICO Hair Studio · Google Review 💛</title>
 <!-- Meta Pixel: jiajia / ID 2360374390980430 -->
 <script>
@@ -96,6 +95,8 @@ alt=""></noscript>
     <h1 id="h1"></h1>
     <p class="sub" id="sub"></p>
 
+    <a class="btn" id="cta" href="https://search.google.com/local/writereview?placeid=ChIJOUSDEetHzDERlM5dplXxUUM" style="margin-bottom:22px"></a>
+
     <div class="tips">
       <h2 id="tips-title"></h2>
       <ul id="tiplist"></ul>
@@ -109,7 +110,7 @@ alt=""></noscript>
 
     <div class="photo" id="photo"></div>
 
-    <a class="btn" id="cta" href="https://search.google.com/local/writereview?placeid=ChIJOUSDEetHzDERlM5dplXxUUM"></a>
+    <a class="btn" id="cta2" href="https://search.google.com/local/writereview?placeid=ChIJOUSDEetHzDERlM5dplXxUUM"></a>
 
     <p class="note" id="foot"></p>
   </div>
@@ -216,6 +217,7 @@ function render() {
   document.getElementById('shuffle').textContent = t.shuffle;
   document.getElementById('photo').textContent = t.photo;
   document.getElementById('cta').textContent = fill(N ? t.cta_n : t.cta_g, t);
+  var c2=document.getElementById('cta2'); if(c2){c2.textContent=document.getElementById('cta').textContent;}
   document.getElementById('foot').textContent = fill(N ? t.foot_n : t.foot_g, t);
   renderSamples();
 }
@@ -261,10 +263,13 @@ function toast(msg) {
 }
 function setLang(l) { LANG = l; render(); }
 render();
-document.getElementById('cta').addEventListener('click',function(){
-  if(typeof fbq==='function'){
-    fbq('trackCustom','ReviewSubmitClick',{source:'review_page'});
-  }
+['cta','cta2'].forEach(function(id){
+  var el=document.getElementById(id); if(!el)return;
+  el.addEventListener('click',function(){
+    if(typeof fbq==='function'){
+      fbq('trackCustom','ReviewSubmitClick',{source:'review_page_'+id});
+    }
+  });
 });
 </script>
 </body>
