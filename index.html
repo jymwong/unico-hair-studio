@@ -479,6 +479,81 @@ footer .soc{display:flex;flex-direction:column;gap:6px}
   .visit .grid2{grid-template-columns:1fr}
   section{padding:64px 0}
 }
+
+/* ===== v3 设计感：保留原配色，只升级版式 ===== */
+/* hero 左字右图，拱形大图 + 金色错位描边（呼应店里的拱形镜子） */
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;column-gap:56px;align-items:center}
+.hero .wrap>*{grid-column:1}
+.hero .hero-shot{grid-column:2;grid-row:1/span 6;margin:0;position:relative;isolation:isolate;border:none;box-shadow:none;max-height:none;overflow:visible;border-radius:0}
+.hero .hero-shot img{border-radius:999px 999px 22px 22px;aspect-ratio:1/1.12;object-fit:cover;object-position:50% 40%;box-shadow:0 30px 70px rgba(51,49,42,.22)}
+.hero .hero-shot:before{content:"";position:absolute;inset:20px -20px -20px 20px;border:1px solid var(--gold-l);border-radius:999px 999px 22px 22px;z-index:-1}
+.hero .hero-shot:after{content:"EST.\A 2018";white-space:pre;position:absolute;left:-26px;bottom:44px;width:92px;height:92px;border-radius:50%;background:var(--ink);color:var(--gold-l);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:3px;line-height:1.3;box-shadow:0 10px 26px rgba(0,0,0,.28)}
+h1{line-height:1.2}
+/* 金线字带 */
+.band{overflow:hidden;border-top:1px solid var(--gold-l);border-bottom:1px solid var(--gold-l);background:var(--paper);padding:14px 0;white-space:nowrap}
+.band-in{display:inline-flex;gap:34px;align-items:center;animation:bandmove 38s linear infinite;font-family:'Cormorant Garamond',serif;font-size:19px;letter-spacing:6px;color:var(--ink)}
+.band-in i{font-style:normal;color:var(--gold);font-size:13px}
+@keyframes bandmove{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.band-in{animation:none}}
+/* USP：去掉方框，改成金线竖分隔的版面 */
+.usp-grid{gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.usp{background:transparent;border:none;border-radius:0;padding:28px 26px}
+.usp+.usp{border-left:1px solid var(--line)}
+.usp .ico{font-size:22px}
+/* 设计师 v3b：六位统一小卡，同尺寸、同裁切、同一色调 */
+.grid{grid-template-columns:repeat(2,1fr);gap:16px;align-items:stretch;margin-top:40px}
+.card{grid-column:auto;margin:0!important;display:flex;gap:20px;align-items:center;background:var(--paper);border:1px solid var(--line);border-top:2px solid var(--line);border-radius:14px;padding:16px;box-shadow:none;transition:.25s}
+.card:hover{transform:none;border-color:var(--gold-l);box-shadow:0 10px 28px rgba(51,49,42,.08)}
+.card:nth-child(1){border-top-color:var(--gold)}
+.card .num{display:none}
+.card .avatar{flex:0 0 118px;width:118px;height:148px;margin:0;border-radius:10px;border:none;object-fit:cover;object-position:50% 25%;transition:transform .4s,box-shadow .4s}
+
+.card:nth-child(5) .avatar{object-position:50% 30%}
+.card:nth-child(6) .avatar{object-position:50% 38%}
+.card>div,.card .lab,.card h3,.card p,.card .sig,.card a{min-width:0}
+.card .info{flex:1;min-width:0}
+.card .lab{margin-bottom:2px}
+.card h3{font-size:20px;margin-bottom:6px}
+.card p.say{min-height:0;font-size:13.5px;line-height:1.6}
+.card .sig{font-size:14px;margin:8px 0 10px}
+.card a.ig{font-size:12.5px}
+/* 价目卡：金色顶线 */
+.pcardx{border-radius:6px;border-top:2px solid var(--gold)}
+/* 店内照：错落拼贴 */
+#gallery-sec .gallery{grid-template-columns:repeat(6,1fr);grid-auto-rows:160px;gap:14px}
+#gallery-sec .gallery figure{aspect-ratio:auto;border-radius:14px}
+#gallery-sec .gallery figure:nth-child(1){grid-column:1/4;grid-row:1/4}
+#gallery-sec .gallery figure:nth-child(2){grid-column:4/7;grid-row:1/3}
+#gallery-sec .gallery figure:nth-child(3){grid-column:4/7;grid-row:3/5}
+#gallery-sec .gallery figure:nth-child(4){grid-column:1/4;grid-row:4/5}
+/* 作品集：瀑布流，保留每张图原比例 */
+.gallery.works{display:block;column-count:4;column-gap:14px}
+.gallery.works figure{aspect-ratio:auto;break-inside:avoid;margin-bottom:14px;border-radius:14px}
+.gallery.works img{height:auto}
+/* 标题：金色短线 */
+h2:after{content:"";display:block;width:54px;height:2px;background:var(--gold);margin-top:16px}
+.skinlab h2:after{background:var(--gold-l)}
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero .hero-shot{grid-column:1;grid-row:auto;margin:40px 20px 0 0}
+  .hero .hero-shot:after{left:-8px;bottom:20px;width:76px;height:76px;font-size:13px}
+  .usp+.usp{border-left:none;border-top:1px solid var(--line)}
+  .grid{grid-template-columns:1fr}
+  .card .avatar{flex-basis:96px;width:96px;height:124px}
+  #gallery-sec .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
+  #gallery-sec .gallery figure:nth-child(n){grid-column:auto;grid-row:auto;aspect-ratio:3/4}
+  .gallery.works{column-count:2}
+}
+
+/* 品牌条：线条图标 + 字标，间距收紧 */
+.brands{padding:40px 0 44px}
+.brands .wrap{gap:18px 7vw;align-items:flex-start}
+.brands .lbl{margin-bottom:8px}
+.brand{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.brand svg{width:34px;height:34px;stroke:var(--gold);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.brand b{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;letter-spacing:3px;color:var(--ink2)}
+.brand em{font-style:normal;font-size:12px;letter-spacing:1px;color:var(--grey)}
+.faq .en-note{display:block;margin-top:6px;font-size:12.5px;color:var(--grey)}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -515,6 +590,7 @@ footer .soc{display:flex;flex-direction:column;gap:6px}
     <div class="hero-shot rv"><img src="img/store.jpg" width="1200" height="900" fetchpriority="high" alt="UNICO Hair Studio storefront — hair salon in Kepong Menjalara, Kuala Lumpur 店面" onerror="this.parentElement.remove()"></div>
   </div>
 </header>
+<div class="band" aria-hidden="true"><div class="band-in"><span>FACE SHAPE FIRST</span><i>✦</i><span>BY APPOINTMENT</span><i>✦</i><span>一店六师</span><i>✦</i><span>EST. 2018</span><i>✦</i><span>KEPONG MENJALARA</span><i>✦</i><span>FACE SHAPE FIRST</span><i>✦</i><span>BY APPOINTMENT</span><i>✦</i><span>一店六师</span><i>✦</i><span>EST. 2018</span><i>✦</i><span>KEPONG MENJALARA</span><i>✦</i></div></div>
 
 
 <section>
@@ -549,30 +625,30 @@ footer .soc{display:flex;flex-direction:column;gap:6px}
     <h2 class="rv">一店六师,各有绝活</h2>
     <p class="lead rv">你不必永远指定同一位——按你要的风格,选对的人。</p>
     <div class="grid">
-      <div class="card rv"><div class="num">01</div><img loading="lazy" decoding="async" class="avatar" src="img/jym-240.jpg" width="240" height="240" alt="JYM — Director, face shape design · UNICO Hair Studio Kepong 脸型风格设计" onerror="this.remove()"><div class="lab">Face Shape Design</div><h3>JYM <span class="role">DIRECTOR</span></h3>
+      <div class="card rv"><div class="num">01</div><img loading="lazy" decoding="async" class="avatar" src="img/jym.jpg" width="240" height="240" alt="JYM — Director, face shape design · UNICO Hair Studio Kepong 脸型风格设计" onerror="this.remove()"><div class="info"><div class="lab">Face Shape Design</div><h3>JYM <span class="role">DIRECTOR</span></h3>
         <p class="say">30+ 女性脸型风格设计 · 改造 100 位姐姐系列主理人</p>
         <div class="sig">发型不是剪出来的,是设计出来的</div>
-        <a class="ig" href="https://www.instagram.com/jym.unico_hair/" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@jym.unico_hair · 更多作品 ➡</a></div>
-      <div class="card rv"><div class="num">02</div><img loading="lazy" decoding="async" class="avatar" src="img/ken-240.jpg" width="240" height="240" alt="Ken — Master stylist, feminine design · UNICO Hair Studio Kepong 女生风格发型" onerror="this.remove()"><div class="lab">Feminine Design</div><h3>Ken <span class="role">MASTER</span></h3>
+        <a class="ig" href="https://www.instagram.com/jym.unico_hair/" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@jym.unico_hair · 更多作品 ➡</a></div></div>
+      <div class="card rv"><div class="num">02</div><img loading="lazy" decoding="async" class="avatar" src="img/ken-front.jpg" width="240" height="240" alt="Ken — Master stylist, feminine design · UNICO Hair Studio Kepong 女生风格发型" onerror="this.remove()"><div class="info"><div class="lab">Feminine Design</div><h3>Ken <span class="role">MASTER</span></h3>
         <p class="say">90/00 后女生的风格发型设计 · 帮你找到适合自己的风格</p>
         <div class="sig">换个发型,也可以换种感觉</div>
-        <a class="ig" href="https://instagram.com/unico_ken0509" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@unico_ken0509 · 更多作品 ➡</a></div>
-      <div class="card rv"><div class="num">03</div><img loading="lazy" decoding="async" class="avatar" src="img/ryan-240.jpg" width="240" height="320" alt="Ryan — Master stylist, face shape & perm advice · UNICO Hair Studio Kepong" onerror="this.remove()"><div class="lab">Hair Tips</div><h3>Ryan <span class="role">MASTER</span></h3>
+        <a class="ig" href="https://instagram.com/unico_ken0509" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@unico_ken0509 · 更多作品 ➡</a></div></div>
+      <div class="card rv"><div class="num">03</div><img loading="lazy" decoding="async" class="avatar" src="img/ryan.jpg" width="240" height="320" alt="Ryan — Master stylist, face shape & perm advice · UNICO Hair Studio Kepong" onerror="this.remove()"><div class="info"><div class="lab">Hair Tips</div><h3>Ryan <span class="role">MASTER</span></h3>
         <p class="say">帮你分析脸型 | 该剪什么刘海、做什么烫发</p>
         <div class="sig">我 30 秒帮你找到答案</div>
-        <a class="ig" href="https://instagram.com/unico_ryannn" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@unico_ryannn · 更多作品 ➡</a></div>
-      <div class="card rv"><div class="num">04</div><img loading="lazy" decoding="async" class="avatar" src="img/felix-240.jpg" width="240" height="320" alt="Felix — Senior stylist, men's haircut · UNICO Hair Studio Kepong 男士剪发" onerror="this.remove()"><div class="lab">Gentlemen Club</div><h3>Felix <span class="role">SENIOR</span></h3>
+        <a class="ig" href="https://instagram.com/unico_ryannn" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@unico_ryannn · 更多作品 ➡</a></div></div>
+      <div class="card rv"><div class="num">04</div><img loading="lazy" decoding="async" class="avatar" src="img/felix.jpg" width="240" height="320" alt="Felix — Senior stylist, men's haircut · UNICO Hair Studio Kepong 男士剪发" onerror="this.remove()"><div class="info"><div class="lab">Gentlemen Club</div><h3>Felix <span class="role">SENIOR</span></h3>
         <p class="say">男士剪发 · 熟客都懂的那把剪刀</p>
         <div class="sig">真正的好发型,是半年后还好整理</div>
-        <a class="ig" href="https://instagram.com/felix_unico_" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@felix_unico_ · 更多作品 ➡</a></div>
-      <div class="card rv"><div class="num">05</div><img loading="lazy" decoding="async" class="avatar" src="img/david-240.jpg" width="240" height="240" alt="David — Senior stylist, hair colour · UNICO Hair Studio Kepong 染发" onerror="this.remove()"><div class="lab">Hair Color Lab</div><h3>David <span class="role">SENIOR</span></h3>
+        <a class="ig" href="https://instagram.com/felix_unico_" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@felix_unico_ · 更多作品 ➡</a></div></div>
+      <div class="card rv"><div class="num">05</div><img loading="lazy" decoding="async" class="avatar" src="img/david.jpg" width="240" height="240" alt="David — Senior stylist, hair colour · UNICO Hair Studio Kepong 染发" onerror="this.remove()"><div class="info"><div class="lab">Hair Color Lab</div><h3>David <span class="role">SENIOR</span></h3>
         <p class="say">高层次长发 × 显白发色 · 温柔帮你把头发变轻</p>
         <div class="sig">发色决定你的气色</div>
-        <a class="ig" href="https://www.instagram.com/unico_david00/" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@unico_david00 · 更多作品 ➡</a></div>
-      <div class="card rv"><div class="num">06</div><img loading="lazy" decoding="async" class="avatar" src="img/rongjin-240.jpg" width="240" height="240" alt="Rong Jin — Junior stylist · UNICO Hair Studio Kepong" onerror="this.remove()"><div class="lab">Academy</div><h3>Rong Jin <span class="role">JUNIOR</span></h3>
+        <a class="ig" href="https://www.instagram.com/unico_david00/" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@unico_david00 · 更多作品 ➡</a></div></div>
+      <div class="card rv"><div class="num">06</div><img loading="lazy" decoding="async" class="avatar" src="img/rongjin.jpg" width="240" height="240" alt="Rong Jin — Junior stylist · UNICO Hair Studio Kepong" onerror="this.remove()"><div class="info"><div class="lab">Academy</div><h3>Rong Jin <span class="role">JUNIOR</span></h3>
         <p class="say">00 后新生代 · 100 天成长日记进行中</p>
         <div class="sig">今天比昨天更进步一点</div>
-        <a class="ig" href="https://instagram.com/unico_rongjin" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@unico_rongjin · 更多作品 ➡</a></div>
+        <a class="ig" href="https://instagram.com/unico_rongjin" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@unico_rongjin · 更多作品 ➡</a></div></div>
     </div>
   </div>
 </section>
@@ -799,14 +875,11 @@ footer .soc{display:flex;flex-direction:column;gap:6px}
     <div class="faq rv">
       <details><summary>「改造 100 位」是免费的吗?</summary><p>不是免费哦。这是 JYM 总监亲自设计操刀的付费改造,按价目表收费。特别的是:全过程会被记录,你会成为 100 位姐姐的其中一位。</p></details>
       <details><summary>剪发有包含洗发吗?</summary><p>有,全部价格都包含洗发和 Consultation。</p></details>
-      <details><summary>营业时间是几点?</summary><p>每天 11AM–8PM(最后接单 7PM),每逢星期二休息。</p></details>
-      <details><summary>需要预约吗?</summary><p>建议预约——不用久等,也方便帮你安排最适合的设计师。WhatsApp 012-350 0624。</p></details>
+      <details><summary>营业时间是几点?</summary><p>每天 11AM–8PM(最后接单 7PM),每逢星期二休息。<span class="en-note" lang="en">Open daily 11am–8pm (last booking 7pm), closed on Tuesdays.</span></p></details>
+      <details><summary>需要预约吗?</summary><p>建议预约——不用久等,也方便帮你安排最适合的设计师。WhatsApp 012-350 0624。<span class="en-note" lang="en">Appointment-only: WhatsApp us and we'll match you with a stylist and time slot.</span></p></details>
       <details><summary>不知道选哪位设计师怎么办?</summary><p>WhatsApp 告诉我们你想要的风格,我们帮你配:总监设计约 Jym,日常剪染 Master 都很稳,男士剪发找 Felix。</p></details>
       <details><summary>VIP 卡金可以买产品吗?</summary><p>可以,服务和产品都能用(产品原价)。</p></details>
-      <details><summary>有停车位吗?</summary><p>有,店门口 Shoplot Parking,好停。</p></details>
-      <details lang="en"><summary>Do I need an appointment?</summary><p>Yes, UNICO is appointment-only. WhatsApp 012-350 0624 and we'll match you with a stylist and time slot.</p></details>
-      <details lang="en"><summary>Is there parking at UNICO Hair Studio Kepong?</summary><p>Yes, shoplot parking is available right in front of Menara Perniagaan Manjalara Dua.</p></details>
-      <details lang="en"><summary>What are the opening hours?</summary><p>Daily 11am to 8pm (last booking 7pm). Closed on Tuesdays.</p></details>
+      <details><summary>有停车位吗?</summary><p>有,店门口 Shoplot Parking,好停。<span class="en-note" lang="en">Shoplot parking right in front of Menara Perniagaan Manjalara Dua, Kepong.</span></p></details>
     </div>
   </div>
 </section>
@@ -814,7 +887,7 @@ footer .soc{display:flex;flex-direction:column;gap:6px}
 <div class="brands">
   <div class="wrap">
     <div class="lbl">我们使用的品牌</div>
-    <span>MILBON</span><span>OLAPLEX</span><span>LA BIOSTHÉTIQUE</span><span>GOLDILOCKS</span>
+    <div class="brand"><svg viewBox="0 0 32 32"><path d="M13 3h6v4h-6z"/><path d="M12 7h8v3l2 3v14a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2V13l2-3z"/><path d="M10 18h12"/></svg><b>MILBON</b><em>日本发质护理</em></div><div class="brand"><svg viewBox="0 0 32 32"><path d="M16 4s8 9 8 15a8 8 0 0 1-16 0c0-6 8-15 8-15z"/><path d="M12 20a4 4 0 0 0 4 4"/></svg><b>OLAPLEX</b><em>键合修护</em></div><div class="brand"><svg viewBox="0 0 32 32"><path d="M6 20a10 10 0 0 1 20 0z"/><path d="M10 20v-4M16 20V12M22 20v-4"/><path d="M8 25h16"/></svg><b>LA BIOSTHÉTIQUE</b><em>头皮护理</em></div><div class="brand"><svg viewBox="0 0 32 32"><rect x="8" y="13" width="16" height="14" rx="3"/><path d="M10 13v-3h12v3"/><path d="M12 20h8"/></svg><b>GOLDILOCKS</b></div>
   </div>
 </div>
 
